@@ -8,3 +8,7 @@ RUN apk add --no-cache \
   msttcorefonts-installer \
   && update-ms-fonts \
   && fc-cache -f
+
+# Other tools
+RUN apk add --no-cache \
+  make
