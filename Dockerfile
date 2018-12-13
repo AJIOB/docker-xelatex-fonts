@@ -1,7 +1,19 @@
-FROM "hwasub/docker-texlive-alpine"
+FROM "phipsgabler/texlive-minimal"
 
 LABEL maintainer="AJIOB <aleksandr9809@gmail.com>"
-LABEL version="1.0.0"
+LABEL version="1.1.0"
+
+# TeXLive update
+RUN tlmgr update --self
+
+# TeXLive deps
+RUN apk add --no-cache \
+  fontconfig
+
+# TeXLive packages
+RUN tlmgr install \
+  xetex \
+  extsizes
 
 # Windows fonts
 RUN apk add --no-cache \
