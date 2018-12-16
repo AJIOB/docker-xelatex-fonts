@@ -16,6 +16,7 @@ RUN apk add --no-cache \
 ## tools for indentfirst
 ## oberdiek for ifpdf
 ## bigfoot for perpage
+## zapfding for pzdr
 ## * for -//-
 RUN tlmgr install \
   xetex \
@@ -24,6 +25,8 @@ RUN tlmgr install \
   tools \
   oberdiek \
   bigfoot \
+  zapfding \
+  \
   geometry \
   setspace \
   footmisc \
@@ -51,6 +54,7 @@ RUN tlmgr install \
   totcount \
   pdfpages \
   textcase \
+  fp \
   extsizes
 
 # Windows fonts
