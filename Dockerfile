@@ -1,15 +1,30 @@
-FROM "phipsgabler/texlive-minimal"
+FROM frolvlad/alpine-glibc:alpine-3.8_glibc-2.28
 
 LABEL maintainer="AJIOB <aleksandr9809@gmail.com>"
 LABEL version="1.1.0"
 
+# Config the automated install
+COPY texlive.profile texlive.profile
+
+# set up packages
+## &&
+# Remove unnecessary archieves
+RUN apk add --no-cache wget perl xz && \
+  wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz && \
+  tar -xzf install-tl-unx.tar.gz && \
+  install-tl-20*/install-tl --profile=./texlive.profile && \
+  apk --no-cache del xz \
+    && \
+  rm install-tl-unx.tar.gz texlive.profile && \
+  rm -r install-tl-20*
+
+# set up path
+ENV PATH="/usr/local/texlive/bin/x86_64-linuxmusl:${PATH}"
+
 # TeXLive update
-RUN tlmgr update --self
-
+## &&
 # TeXLive deps
-RUN apk add --no-cache \
-  fontconfig
-
+## &&
 # TeXLive packages
 ## xetex for xelatex compiler
 ## t2 for mathtext
@@ -18,7 +33,15 @@ RUN apk add --no-cache \
 ## bigfoot for perpage
 ## zapfding for pzdr
 ## * for -//-
-RUN tlmgr install \
+## &&
+# Windows fonts
+## &&
+# Other tools
+RUN tlmgr update --self \
+    && \
+  apk add --no-cache fontconfig \
+    && \
+  tlmgr install \
   xetex \
   polyglossia \
   t2 \
@@ -55,14 +78,11 @@ RUN tlmgr install \
   pdfpages \
   textcase \
   fp \
-  extsizes
-
-# Windows fonts
-RUN apk add --no-cache \
+  extsizes \
+    && \
+  apk add --no-cache \
   msttcorefonts-installer \
   && update-ms-fonts \
-  && fc-cache -f
-
-# Other tools
-RUN apk add --no-cache \
-  make
+  && fc-cache -f \
+    && \
+  apk add --no-cache make
