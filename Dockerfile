@@ -1,7 +1,7 @@
 FROM frolvlad/alpine-glibc:alpine-3.8_glibc-2.28
 
 LABEL maintainer="AJIOB <aleksandr9809@gmail.com>"
-LABEL version="1.1.1"
+LABEL version="1.1.2"
 
 # Config the automated install
 COPY texlive.profile texlive.profile
@@ -27,6 +27,7 @@ ENV PATH="/usr/local/texlive/bin/x86_64-linuxmusl:${PATH}"
 ## &&
 # TeXLive packages
 ## hyphen-* for english/russial lang word wraps support
+## latexmk for fast build target
 ## xetex for xelatex compiler
 ## t2 for mathtext
 ## tools for indentfirst
@@ -47,6 +48,7 @@ RUN tlmgr update --self \
   hyphen-english \
   hyphen-russian \
   \
+  latexmk \
   xetex \
   polyglossia \
   t2 \
