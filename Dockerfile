@@ -1,7 +1,7 @@
 FROM frolvlad/alpine-glibc:alpine-3.8_glibc-2.28
 
 LABEL maintainer="AJIOB <aleksandr9809@gmail.com>"
-LABEL version="1.1.3"
+LABEL version="1.1.4"
 
 # Config the automated install
 COPY texlive.profile texlive.profile
@@ -89,7 +89,7 @@ RUN tlmgr update --self \
   textcase \
   fp \
   extsizes \
-  fmtstyle \
+  fmtcount \
     && \
   apk add --no-cache \
   msttcorefonts-installer \
