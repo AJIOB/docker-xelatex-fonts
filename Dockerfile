@@ -58,6 +58,7 @@ RUN tlmgr update --self \
   bigfoot \
   zapfding \
   xstring \
+  datetime \
   \
   geometry \
   setspace \
@@ -88,6 +89,7 @@ RUN tlmgr update --self \
   textcase \
   fp \
   extsizes \
+  fmtstyle \
     && \
   apk add --no-cache \
   msttcorefonts-installer \
