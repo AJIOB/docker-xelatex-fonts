@@ -1,7 +1,7 @@
 FROM frolvlad/alpine-glibc:alpine-3.8_glibc-2.28
 
 LABEL maintainer="AJIOB <aleksandr9809@gmail.com>"
-LABEL version="1.1.4"
+LABEL version="1.1.5"
 
 # Config the automated install
 COPY texlive.profile texlive.profile
@@ -35,6 +35,7 @@ ENV PATH="/usr/local/texlive/bin/x86_64-linuxmusl:${PATH}"
 ## oberdiek for ifpdf
 ## bigfoot for perpage
 ## zapfding for pzdr
+## koma-script for tocbasic
 ## * for -//-
 ## &&
 # Windows fonts
@@ -59,6 +60,7 @@ RUN tlmgr update --self \
   zapfding \
   xstring \
   datetime \
+  nomencl \
   \
   geometry \
   setspace \
@@ -90,6 +92,7 @@ RUN tlmgr update --self \
   fp \
   extsizes \
   fmtcount \
+  koma-script \
     && \
   apk add --no-cache \
   msttcorefonts-installer \
