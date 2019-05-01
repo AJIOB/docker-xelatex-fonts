@@ -1,7 +1,7 @@
 FROM frolvlad/alpine-glibc:alpine-3.8_glibc-2.28
 
 LABEL maintainer="AJIOB <aleksandr9809@gmail.com>"
-LABEL version="1.1.5"
+LABEL version="1.1.6"
 
 # Config the automated install
 COPY texlive.profile texlive.profile
@@ -73,6 +73,7 @@ RUN tlmgr update --self \
   caption \
   amsmath \
   amscls \
+  mathspec \
   enumitem \
   makecell \
   multirow \
