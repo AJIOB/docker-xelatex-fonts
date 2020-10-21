@@ -19,7 +19,7 @@ RUN apk add --no-cache wget perl xz && \
   rm -r install-tl-20*
 
 # set up path
-ENV PATH="/usr/local/texlive/bin/x86_64-linuxmusl:${PATH}"
+ENV PATH="/usr/local/texlive/bin/x86_64-linux:${PATH}"
 
 # TeXLive update
 ## &&
