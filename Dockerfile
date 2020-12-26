@@ -1,7 +1,7 @@
 FROM frolvlad/alpine-glibc:alpine-3.12_glibc-2.32
 
 LABEL maintainer="AJIOB <aleksandr9809@gmail.com>"
-LABEL version="1.1.7"
+LABEL version="1.2.0"
 
 # Config the automated install
 COPY texlive.profile texlive.profile
@@ -94,6 +94,7 @@ RUN tlmgr update --self \
   extsizes \
   fmtcount \
   koma-script \
+  pdflscape \
     && \
   apk add --no-cache \
   msttcorefonts-installer \
