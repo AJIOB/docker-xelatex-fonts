@@ -1,7 +1,7 @@
-FROM frolvlad/alpine-glibc:alpine-3.8_glibc-2.28
+FROM frolvlad/alpine-glibc:alpine-3.12_glibc-2.32
 
 LABEL maintainer="AJIOB <aleksandr9809@gmail.com>"
-LABEL version="1.1.6"
+LABEL version="1.1.7"
 
 # Config the automated install
 COPY texlive.profile texlive.profile
@@ -19,7 +19,7 @@ RUN apk add --no-cache wget perl xz && \
   rm -r install-tl-20*
 
 # set up path
-ENV PATH="/usr/local/texlive/bin/x86_64-linux:${PATH}"
+ENV PATH="/usr/local/texlive/bin/x86_64-linuxmusl:${PATH}"
 
 # TeXLive update
 ## &&
