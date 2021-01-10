@@ -30,6 +30,7 @@ ENV PATH="/usr/local/texlive/bin/x86_64-linuxmusl:${PATH}"
 ## xstring for string switch-cases
 ## latexmk for fast build target
 ## xetex for xelatex compiler
+## multibib for multiple bibliographies
 ## t2 for mathtext
 ## tools for indentfirst
 ## oberdiek for ifpdf
@@ -95,6 +96,7 @@ RUN tlmgr update --self \
   fmtcount \
   koma-script \
   pdflscape \
+  multibib \
     && \
   apk add --no-cache \
   msttcorefonts-installer \
