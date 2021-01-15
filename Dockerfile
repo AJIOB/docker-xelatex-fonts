@@ -31,6 +31,7 @@ ENV PATH="/usr/local/texlive/bin/x86_64-linuxmusl:${PATH}"
 ## latexmk for fast build target
 ## xetex for xelatex compiler
 ## multibib for multiple bibliographies
+## cleveref for nice grouping references
 ## t2 for mathtext
 ## tools for indentfirst
 ## oberdiek for ifpdf
@@ -97,6 +98,7 @@ RUN tlmgr update --self \
   koma-script \
   pdflscape \
   multibib \
+  cleveref \
     && \
   apk add --no-cache \
   msttcorefonts-installer \
